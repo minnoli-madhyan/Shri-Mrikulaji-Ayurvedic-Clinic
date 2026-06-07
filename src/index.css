@@ -1,0 +1,362 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: Arial, sans-serif;
+}
+
+/* home page services section */
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee-track {
+  animation: marquee 30s linear infinite; /* adjust speed here */
+}
+
+/* Home page testiomonial cars */
+.testimonial-card {
+  position: absolute;
+  width: 280px;
+  padding: 25px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  text-align: center;
+  transition: transform 0.5s ease, opacity 0.5s ease, left 0.5s ease;
+  opacity: 0.6;
+  z-index: 1;
+}
+
+.testimonial-card.left {
+  left: 15%;
+  transform: translateX(-50%) scale(0.85);
+}
+
+.testimonial-card.center {
+  left: 50%;
+  transform: translateX(-50%) scale(1.2);
+  opacity: 1;
+  z-index: 3;
+}
+
+.testimonial-card.right {
+  left: 85%;
+  transform: translateX(-50%) scale(0.85);
+}
+
+.client-img {
+  width: 70px;
+  height: 70px;
+  margin-top: -50px;
+  border-radius: 50%;
+  border: 3px solid white;
+  object-fit: cover;
+  background: white;
+}
+
+
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 3.9%;
+    --primary: 165 85% 12%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 0 0% 96.1%;
+    --secondary-foreground: 0 0% 9%;
+    --muted: 0 0% 96.1%;
+    --muted-foreground: 0 0% 45.1%;
+    --accent: 0 0% 96.1%;
+    --accent-foreground: 0 0% 9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 89.8%;
+    --input: 0 0% 89.8%;
+    --ring: 0 0% 3.9%;
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+    --radius: 0.5rem;
+  }
+  .dark {
+    --background: 0 0% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 0 0% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 0 0% 9%;
+    --secondary: 0 0% 14.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 0% 14.9%;
+    --muted-foreground: 0 0% 63.9%;
+    --accent: 0 0% 14.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 14.9%;
+    --input: 0 0% 14.9%;
+    --ring: 0 0% 83.1%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+  }
+}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  /* --- Layout & Typography --- */
+  .page-container {
+    @apply min-h-screen bg-[#FCFDFB] font-sans text-slate-900 selection:bg-emerald-100 selection:text-emerald-900;
+  }
+  .section-heading {
+    @apply text-3xl md:text-5xl font-serif font-bold text-emerald-900 mb-4;
+  }
+  .section-divider {
+    @apply h-1.5 w-24 bg-emerald-600 mx-auto rounded-full mb-6;
+  }
+  .section-subtext {
+    @apply text-slate-600 max-w-3xl mx-auto text-lg leading-relaxed italic;
+  }
+
+  /* --- Navigation --- */
+  .nav-container {
+    @apply sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-emerald-100;
+  }
+  .brand-title {
+    @apply text-xl font-bold text-emerald-900 block leading-none;
+  }
+  .brand-subtitle {
+    @apply text-[10px] uppercase tracking-[0.2em] text-emerald-600 font-semibold;
+  }
+  .nav-link {
+    @apply hover:text-emerald-600 transition-colors;
+  }
+  .nav-link-active {
+    @apply text-emerald-700 border-b-2 border-emerald-600 pb-1;
+  }
+  .mobile-menu {
+    @apply md:hidden bg-white border-b border-emerald-100 px-4 py-6 space-y-4 shadow-xl;
+  }
+
+  /* --- Buttons --- */
+  .btn-primary {
+    @apply bg-emerald-700 text-white px-6 py-2.5 rounded-full hover:bg-emerald-800 transition-all shadow-md shadow-emerald-200 hover:shadow-lg active:scale-95;
+  } 
+
+  /* --- Hero Section --- */
+  .hero-section {
+    @apply relative py-24 bg-emerald-900 text-white overflow-hidden;
+  }
+  .hero-bg-effect {
+    @apply absolute inset-0 opacity-10; /* Requires children for blobs or use inline svg/divs */
+  }
+  .hero-badge {
+    @apply inline-block px-4 py-1.5 rounded-full bg-emerald-800/50 border border-emerald-700 text-emerald-200 text-sm font-medium mb-6;
+  }
+  .hero-title {
+    @apply text-4xl md:text-6xl font-serif font-bold mb-6 tracking-tight;
+  }
+  .hero-description {
+    @apply text-emerald-100 max-w-2xl mx-auto text-lg leading-relaxed;
+  }
+
+  /* --- Treatment Cards --- */
+ .card-base {
+    /* Removed horizontal scroll props, restored standard flexible layout */
+    @apply bg-white p-6 rounded-2xl shadow-sm border border-emerald-50 hover:shadow-md transition-all duration-300 flex flex-col h-full;
+  }
+  .card-header {
+    /* New class for Side-by-Side Icon and Title */
+    @apply flex items-center gap-4 mb-4;
+  }
+  .card-icon-wrapper {
+    /* Removed mb-4, kept shrink-0 */
+    @apply w-12 h-12 bg-emerald-100 rounded-xl flex items-center justify-center text-emerald-700 transition-colors duration-300 shrink-0;
+  }
+  .card-title {
+    /* Removed mb-2 */
+    @apply text-xl font-bold text-emerald-900 leading-tight;
+  }
+  .card-description {
+    @apply text-emerald-700 text-sm mb-4 italic leading-relaxed;
+  }
+  .card-list-item {
+    @apply flex items-start gap-2.5 text-slate-600 text-sm leading-snug;
+  }
+  .card-bullet {
+    @apply min-w-[6px] h-[6px] rounded-full bg-emerald-400 mt-1.5 shrink-0;
+  }
+
+  /* --- Diet Cards --- */
+  .diet-card-pathya {
+    @apply bg-white rounded-[2rem] p-10 shadow-sm border border-emerald-100 hover:shadow-md transition-shadow;
+  }
+  .diet-card-apathya {
+    @apply bg-white rounded-[2rem] p-10 shadow-sm border border-red-50 hover:shadow-md transition-shadow;
+  }
+  .diet-category-title {
+    @apply font-bold mb-3 flex items-center gap-2;
+  }
+  .diet-text {
+    @apply text-slate-600 leading-relaxed pl-6;
+  }
+  .diet-tip {
+    @apply mt-10 p-5 rounded-2xl text-sm flex gap-3 items-start border;
+  }
+
+  /* Premium Animations */
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animated-heading {
+  background: linear-gradient(-45deg, #10b981, #34d399, #ffffff, #059669);
+  background-size: 300% 300%;
+  animation: gradientShift 8s ease infinite;
+  -webkit-background-clip: text;
+  -webkit-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Scroll Reveal Base Class */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.page-container {
+  /* Shifted from #FCFDFB to a slightly deeper, sophisticated mint-gray */
+  @apply min-h-screen bg-[#F1F5F2] font-sans text-slate-900 selection:bg-emerald-100 selection:text-emerald-900;
+}
+
+.card-base {
+  /* Added a distinct border and white-base to pop against the new background */
+  @apply bg-white p-7 rounded-[2rem] shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-white/50 hover:border-emerald-200 transition-all duration-500 flex flex-col h-full relative overflow-hidden;
+}
+
+/* Custom shadow for extreme depth on hover */
+.hover-shadow-extra:hover {
+  box-shadow: 0 40px 100px -15px rgba(5, 150, 105, 0.3);
+}
+
+/* Update your index.css */
+@layer components {
+  .animated-heading {
+    @apply py-2; /* Prevent clipping of descenders */
+    filter: drop-shadow(0 10px 15px rgba(5, 150, 105, 0.2));
+  }
+
+  .hover-shadow-extra:hover {
+    /* Increased shadow depth and emerald tint */
+    box-shadow: 0 30px 60px -12px rgba(5, 150, 105, 0.25), 
+                0 18px 36px -18px rgba(0, 0, 0, 0.3);
+    border-color: rgba(16, 185, 129, 0.3);
+  }
+
+  /* Smooth scroll for the entire page */
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+  /* --- Footer --- */
+  .footer-base {
+    @apply bg-emerald-950 text-emerald-200 py-20;
+  }
+  .footer-heading {
+    @apply text-white text-xl font-bold mb-8 relative pb-2 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-12 after:h-1 after:bg-emerald-500;
+  }
+  .footer-link {
+    @apply hover:text-white transition-colors flex items-center gap-2;
+  }
+  .social-icon {
+    @apply w-10 h-10 rounded-full bg-emerald-900 flex items-center justify-center hover:bg-emerald-800 cursor-pointer transition-colors border border-emerald-800;
+  }
+  .footer-bottom {
+    @apply max-w-7xl mx-auto px-4 mt-20 pt-8 border-t border-emerald-900/50 flex flex-col md:flex-row justify-between items-center gap-4 text-sm opacity-60;
+  }
+}
+
+/* =========================
+   DOCTOR TEAM IMAGE HOVER
+========================= */
+.team-image-wrap {
+  width: 170px;
+  height: 170px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 0 auto 20px;
+  transition: width 0.6s ease, height 0.6s ease, border-radius 0.6s ease;
+  border: 4px solid #d1fae5;
+  box-shadow: 0 4px 20px rgba(16,185,129,0.25);
+  flex-shrink: 0;
+}
+
+.group:hover .team-image-wrap {
+  width: 90%;
+  height: 200px;
+  border-radius: 12px;
+  border-color: transparent;
+}
+
+.team-image-wrap img,
+.team-image-wrap .team-initials {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.team-initials {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  font-weight: 900;
+  color: white;
+}
+
+.team-desc {
+  transition: opacity 0.3s ease, max-height 0.4s ease, margin 0.3s ease;
+  opacity: 1;
+  max-height: 80px;
+  overflow: hidden;
+}
+
+.group:hover .team-desc {
+  opacity: 0;
+  max-height: 0;
+  margin: 0 !important;
+}

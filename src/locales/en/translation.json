@@ -1,0 +1,894 @@
+{
+  "meta": {
+    "title": "Shree Mrikula Ji — Ayurvedic Clinic",
+    "description": "Three generations of trusted Ayurvedic healers delivering authentic care since 1975."
+  },
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "services": "Services",
+    "doctors": "Doctors",
+    "products": "Products",
+    "history": "History",
+    "contact": "Contact",
+    "cart": "Cart",
+    "cartLabel": "Cart",
+    "toggleMenu": "Toggle menu",
+    "registerLogin": "Register / Login",
+    "account": "Account",
+    "dashboard": "Dashboard",
+    "signOut": "Sign Out",
+    "adminPortal": "Admin Portal",
+    "doctorPortal": "Doctor Portal",
+    "blog": "Blog"
+  },
+  "brand": {
+    "name": "Shree Mrikula Ji",
+    "subtitle": "Ayurvedic Clinic",
+    "logoAlt": "Shree Mrikula ji Ayurvedic Clinic",
+    "tagline": "Healing through the 5,000-year-old wisdom of Ayurveda. Balancing Doshas & restoring natural vitality since 1975."
+  },
+  "hero": {
+    "badge": "🌿 Authentic Ayurveda Since 1975",
+    "headline": "Heal your body, Balance your mind,",
+    "headlineCont": "& Rejuvenate your soul",
+    "subheading": "Three generations of trusted healers — delivering authentic Ayurvedic care.",
+    "bookAppointment": "Book Appointment",
+    "exploreProducts": "Explore Products",
+    "stats": {
+      "yearsLabel": "Years of Healing",
+      "patientsLabel": "Patients Treated"
+    }
+  },
+  "about": {
+    "heading": "What is Ayurveda?",
+    "principle": "Based on the basic principle of \"Prevention is better than Cure\"",
+    "imageAlt": "Ayurveda",
+    "subheading": "The Science of Life",
+    "para1": "Ayurveda treats the whole person — body, mind, and spirit. It emphasizes prevention and maintenance of health through balance in lifestyle, diet, and herbs.",
+    "para2": "By understanding your unique constitution, Ayurveda provides personalized recommendations for optimal health and vitality."
+  },
+  "principles": {
+    "heading": "Principals of Ayurvedic Treatment",
+    "shloka": "प्रयोजनं चास्य आयुर्वेदस्य स्वास्थ्यस्य स्वास्थ्य रक्षणं,\nआतुरस्य विकार प्रशमनं च",
+    "shlokaTranslation": "— The twofold purpose of Ayurveda: to protect the health of the healthy, and to relieve the afflicted of disease.",
+    "cards": [
+      {
+        "titleEn": "Prevent the Diseases or Deformities in Human body (Psychological)",
+        "titleHi": "स्वस्थ मनुष्य के स्वास्थ्य की रक्षा करना",
+        "description": "Ayurveda places its highest priority on preserving the health of a healthy individual — physically, mentally, and spiritually — before disease can take root."
+      },
+      {
+        "titleEn": "Cure the Patient if Gets Ill",
+        "titleHi": "रोगी को स्वस्थ करने हेतु प्रयत्न करना",
+        "description": "When illness does arise, Ayurveda employs holistic therapies, herbal remedies, and personalised treatments to restore the patient to a state of complete well-being."
+      }
+    ]
+  },
+  "features": {
+    "heading": "Why Choose Us",
+    "items": [
+      {
+        "title": "Holistic Healing",
+        "desc": "Restoring balance of mind, body, and soul through authentic Ayurvedic practices."
+      },
+      {
+        "title": "Diet & Lifestyle Guidance",
+        "desc": "We believe food is medicine. Patients follow tailored diets to accelerate recovery."
+      },
+      {
+        "title": "Natural Remedies",
+        "desc": "Every treatment is designed to cure from the root, avoiding side effects."
+      },
+      {
+        "title": "Accessible Care",
+        "desc": "because health is a right, not a privilege."
+      }
+    ]
+  },
+  "services": {
+    "heading": "Our Services",
+    "subheading": "Specialized Ayurvedic treatments rooted in authentic healing.",
+    "knowMore": "Know More",
+    "items": [
+      "Fever & Infection Care",
+      "Liver & Digestive Health",
+      "Kidney & Urinary Care",
+      "Pain Management & Paralysis",
+      "Heart & Blood Wellness",
+      "Skin & Dermatology",
+      "Women's Health",
+      "Men's Wellness & Vitality",
+      "Child Care (Bal Rog)",
+      "Lifestyle & Cosmetic Solutions"
+    ]
+  },
+  "testimonials": {
+    "heading": "What Clients Say",
+    "subheading": "We place huge value on strong relationships and the benefit they bring.",
+    "role": "Patient",
+    "items": [
+      {
+        "text": "This clinic is excellent! The staff is friendly and professional. The doctor listened carefully to my problem and provided satisfactory treatment. I felt very comfortable here. I highly recommend it!",
+        "name": "Vikas Yadav"
+      },
+      {
+        "text": "Best ayurveda treatment received by me, many times. Thanks Dr. Lalitendra.",
+        "name": "Dushyant Singh Chauhan"
+      },
+      {
+        "text": "Awesome doctor. Very detailed. They care much about their patients and provide very effective treatment.",
+        "name": "Rahul Rajput"
+      }
+    ]
+  },
+  "cta": {
+    "heading": "Authentic Care Since 1975",
+    "subheading": "Serving humanity with pure Ayurveda.",
+    "bookButton": "Book Appointment",
+    "tagline": "Shree Mrikula Ji Clinic — healing with trust & care."
+  },
+  "footer": {
+    "brand": {
+      "tagline": "Healing through the 5,000-year-old wisdom of Ayurveda. Balancing Doshas & restoring natural vitality since 1975."
+    },
+    "badges": {
+      "ayush": "AYUSH Affiliated",
+      "nima": "NIMA Affiliated",
+      "since": "Since 1975"
+    },
+    "clinic": {
+      "heading": "Our Clinic",
+      "address": "GT Road, Sikandrarao, Hathras,\nUttar Pradesh — 204215",
+      "phone": "+91 9759991759",
+      "email": "shrimac.70@gmail.com",
+      "hours": "Mon – Sun: 8:00 AM – 2:00 PM & 4:00 PM – 6:00 PM (Physical)\nOnline: 6:00 PM – 8:00 PM"
+    },
+    "quickLinks": {
+      "heading": "Quick Links",
+      "links": {
+        "home": "Home",
+        "about": "About Us",
+        "services": "Services",
+        "doctors": "Our Doctors",
+        "products": "Products",
+        "appointment": "Book Appointment",
+        "contact": "Contact Us"
+      }
+    },
+    "specializations": {
+      "heading": "Specializations",
+      "items": [
+        "Women's Health",
+        "Liver & Digestion",
+        "Joint & Bone Care",
+        "Skin & Hair Care",
+        "Child Health",
+        "Panchakarma Therapy"
+      ],
+      "quote": "\"Ayurveda teaches us that the mind and body are inextricably linked — nothing has more power to heal than the mind.\""
+    },
+    "copyright": "© {{year}} Shree Mrikula Ji Ayurvedic Clinic. All Rights Reserved.",
+    "adminPortal": "Admin Portal",
+    "doctorPortal": "Doctor Portal",
+    "scrollTop": "Back to top"
+  },
+  "auth": {
+    "modalTitle": "Welcome Back",
+    "modalSubtitle": "Sign in to your account",
+    "modalTitleSignup": "Create Account",
+    "modalSubtitleSignup": "Join us for authentic Ayurvedic care",
+    "close": "Close",
+    "fullName": "Full Name",
+    "phoneNumber": "Phone Number",
+    "emailAddress": "Email Address",
+    "password": "Password",
+    "confirmPassword": "Confirm Password",
+    "namePlaceholder": "Your name",
+    "phonePlaceholder": "10-digit",
+    "emailPlaceholder": "name@example.com",
+    "passwordPlaceholder": "••••••••",
+    "whatsappHint": "📲 Enter your WhatsApp number to receive all booking updates.",
+    "forgotPassword": "Forgot password?",
+    "loginButton": "Login to Account",
+    "signupButton": "Create Account",
+    "loading": "Please wait...",
+    "noAccount": "Don't have an account?",
+    "haveAccount": "Already have an account?",
+    "signUp": "Sign Up",
+    "login": "Login",
+    "accountCreated": "Account Created!",
+    "accountReadyMsg": "Your account is ready. Now log in to access your dashboard.",
+    "goToLogin": "Go to Login",
+    "passwordStrength": {
+      "weak": "Weak",
+      "fair": "Fair",
+      "strong": "Strong"
+    },
+    "validation": {
+      "nameRequired": "Name is required",
+      "nameMinLength": "At least 3 characters",
+      "phoneRequired": "Phone is required",
+      "phoneInvalid": "Enter valid 10-digit mobile number",
+      "emailRequired": "Email is required",
+      "emailInvalid": "Enter a valid email",
+      "passwordRequired": "Password is required",
+      "passwordMinLength": "Minimum 6 characters",
+      "passwordMismatch": "Passwords do not match",
+      "emailConfirmRequired": "Please confirm your email before logging in. Check your inbox."
+    },
+    "forgotTitle":          "Reset Password",
+    "forgotSubtitle":       "Enter your email to receive a reset link",
+    "forgotSendLink":       "Send Reset Link",
+    "forgotSentTitle":      "Reset Email Sent!",
+    "forgotSentSubtitle":   "Check your inbox",
+    "forgotSentMsg":        "We've sent a password reset link to",
+    "forgotSentNote":       "Click the link in that email to choose a new password. The link expires in 1 hour.",
+    "forgotNoEmail":        "Didn't receive it?",
+    "forgotResend":         "Resend",
+    "backToLogin":          "Back to Login",
+
+    "resetVerifying":       "Verifying your reset link…",
+    "resetExpiredTitle":    "Link Expired",
+    "resetExpiredSubtitle": "This reset link is no longer valid",
+    "resetExpiredMsg":      "The password reset link has expired or is invalid. Please request a new one.",
+    "resetTitle":           "Set New Password",
+    "resetSubtitle":        "Choose a strong password for your account",
+    "resetSaveButton":      "Save New Password",
+    "resetSuccessTitle":    "Password Updated",
+    "resetSuccessSubtitle": "Your new password is ready to use",
+    "resetSuccessHeading":  "All Done!",
+    "resetSuccessMsg":      "Your password has been updated. You can now log in with your new password.",
+
+    "goHome":               "Back to Home"
+  },
+  "langSwitcher": {
+    "label": "Language",
+    "en": "EN",
+    "hi": "हि"
+  },
+  "loading": "Loading...",
+  "error": {
+    "generic": "Something went wrong. Please try again.",
+    "notFound": "Page not found.",
+    "retry": "Retry"
+  },
+  "empty": {
+    "noResults": "No results found.",
+    "noProducts": "No products available.",
+    "noAppointments": "No appointments yet."
+  },
+  "aboutPage": {
+    "meta": {
+      "title": "About Us — Shree Mrikula Ji Ayurvedic Clinic",
+      "description": "Learn about our three-generation legacy of authentic Ayurvedic healing since 1975."
+    },
+    "hero": {
+      "badge": "🌿 Since 1975",
+      "title": "Our Legacy of Healing",
+      "subtitle": "A three-generation tradition of authentic Ayurveda, dedicated to serving humanity with trust and care for over five decades."
+    },
+    "story": {
+      "label": "Our Story",
+      "heading": "Born from a Passion for Service",
+      "para1": "Our story begins with my grandfather, born on <strong>4th August 1947</strong>, who established <em>Shree Mrikula Ji Clinic</em> in 1975.",
+      "para2": "With deep faith in Ayurveda, he dedicated his life to treating people naturally — without any side effects, and with one vision: to serve humanity.",
+      "founderQuote": "Ayurveda is not just treatment — it is a way of life."
+    },
+    "mission": {
+      "heading": "Our Mission",
+      "subtext": "Simple yet powerful: to create a healthier environment and heal people the natural way.",
+      "items": [
+        "Holistic Healing",
+        "Diet & Lifestyle Guidance",
+        "Natural Remedies",
+        "Accessible Care"
+      ]
+    },
+    "team": {
+      "heading": "Meet Our Team",
+      "subtext": "Three generations of Ayurvedic expertise — from classical Vaidh wisdom and modern D.Pharma practice to a fresh BAMS graduate and seamless clinic management.",
+      "specialtiesLabel": "Specialties",
+      "expLabel": "Exp.",
+      "members": [
+        {
+          "name": "Vaidh Rajendra Singh",
+          "role": "Founder & Ayurvedic Specialist",
+          "tag": "Founder",
+          "exp": "50+ yrs",
+          "specialties": [
+            "Typhoid & All Fevers",
+            "Migraine",
+            "Joint Pain",
+            "Root-Cause Healing"
+          ],
+          "bio": "Our journey began with Vaidh Rajendra Singh, who completed his Ayurvedacharya and established Shree Mrikula Ji Clinic in 1975. With decades of experience, he specialises in treating typhoid, all types of fever, migraine, and joint pain. Known for his compassionate approach, he treats patients naturally, focusing on root-cause healing without side effects. His philosophy is simple: Ayurveda is a way of life, and health should be accessible to everyone.",
+          "quote": "Ayurveda is a way of life, and health should be accessible to everyone."
+        },
+        {
+          "name": "Vaidh Lalitendra Singh",
+          "role": "Ayurvedic Practitioner & D.Pharma",
+          "tag": "Practitioner",
+          "exp": "25+ yrs",
+          "specialties": [
+            "Typhoid & Diabetes",
+            "Heart & Blood Pressure",
+            "Piles & Paralysis",
+            "Hormonal Disorders & Leucorrhea"
+          ],
+          "bio": "With a D.Pharma qualification, Vaidh Lalitendra Singh brings a powerful blend of traditional Ayurveda and modern medicine. He has extensive experience managing typhoid, diabetes, heart problems, blood pressure, piles, paralysis, joint pain, hormonal disturbances, and leucorrhea. His approach combines deep understanding of the body with natural treatments, ensuring every patient achieves holistic wellness.",
+          "quote": "True healing combines the wisdom of tradition with the understanding of modern science."
+        },
+        {
+          "name": "Mridul Sengar",
+          "role": "BAMS & Diagnostic Specialist",
+          "tag": "BAMS",
+          "exp": "5+ yrs",
+          "specialties": [
+            "In-Depth Diagnosis",
+            "Personalised Treatment Plans",
+            "Complex Health Issues",
+            "Lifestyle-Based Recovery"
+          ],
+          "bio": "Mridul Sengar completed his BAMS in 2025 and focuses on in-depth diagnosis and personalised treatment plans for all types of health problems. His precision in understanding complex health issues allows the clinic to treat patients effectively and safely, always prioritising natural healing and lifestyle-based recovery.",
+          "quote": "Precision in diagnosis is the first step to effective and lasting recovery."
+        },
+        {
+          "name": "Tanuj Sengar",
+          "role": "Clinic Manager & Operations Head",
+          "tag": "Management",
+          "exp": "5+ yrs",
+          "specialties": [
+            "Patient Coordination",
+            "Clinic Operations",
+            "Appointment Management",
+            "Patient Care & Support"
+          ],
+          "bio": "Tanuj Sengar is the backbone of day-to-day operations at Shree Mrikula Ji Clinic. He ensures every patient receives a seamless and caring experience from the moment they arrive. His dedication to smooth clinic management allows the doctors to focus entirely on healing, while patients feel supported, informed, and at ease throughout their treatment journey.",
+          "quote": "A well-run clinic is where healing truly begins — comfort and care start before the consultation."
+        }
+      ]
+    },
+    "timeline": {
+      "heading": "Legacy & Milestones",
+      "subtext": "Serving for over 50 years",
+      "items": [
+        {
+          "year": "1975",
+          "title": "Founded",
+          "desc": "Established by Vaidh Rajendra Singh with a commitment to serving the best treatment."
+        },
+        {
+          "year": "Decades",
+          "title": "Nationwide Trust",
+          "desc": "Building a reputation for safe and compassionate care across India."
+        },
+        {
+          "year": "2025",
+          "title": "The Next Gen",
+          "desc": "Three generations now serving, integrating modern BAMS diagnostics with ancient faith."
+        },
+        {
+          "year": "Today",
+          "title": "Global Vision",
+          "desc": "Affiliated with AYUSH & NIMA, innovating tradition for the modern world."
+        }
+      ]
+    },
+    "standout": {
+      "heading": "What Makes Us Stand Out",
+      "items": [
+        "Prioritizing health",
+        "Nationwide trust",
+        "Generational expertise",
+        "Natural & safe",
+        "AYUSH & NIMA Affiliated",
+        "Holistic healing"
+      ],
+      "bookButton": "Book an Appointment",
+      "closingQuote": "\"Shree Mrikula Ji Clinic — healing with trust, care, and the wisdom of Ayurveda since 1975.\""
+    }
+  },
+  "contactPage": {
+    "meta": {
+      "title": "Contact Us — Shree Mrikula Ji Ayurvedic Clinic",
+      "description": "Reach out to Shree Mrikula Ji Ayurvedic Clinic. Questions about Ayurvedic treatments? We respond within 24 hours."
+    },
+    "hero": {
+      "badge": "Reach Out to Us",
+      "title": "Get in",
+      "titleHighlight": "Touch",
+      "subtitle": "Questions about our Ayurvedic treatments? We respond within 24 hours — always with care."
+    },
+    "infoCards": {
+      "location": {
+        "label": "Location",
+        "address": "GT Road, Sikandrarao, Hathras",
+        "state": "Uttar Pradesh — 204215",
+        "mapLink": "Open in Google Maps"
+      },
+      "call": {
+        "label": "Call Us",
+        "phone": "+91 9759991759",
+        "subtitle": "Vaidh Rajendra & Lalitendra Singh",
+        "tapCall": "Tap to call now"
+      },
+      "email": {
+        "label": "Email Us",
+        "address": "shrimac.70@gmail.com",
+        "subtitle": "Official Consultation Email",
+        "sendEmail": "Send email now"
+      }
+    },
+    "form": {
+      "heading": "Send Us a Message",
+      "subheading": "We'll get back to you within 24 hours.",
+      "fields": {
+        "fullName": "Full Name",
+        "fullNamePlaceholder": "Your full name",
+        "phone": "Phone Number",
+        "phonePlaceholder": "10-digit mobile",
+        "email": "Email Address",
+        "emailPlaceholder": "name@example.com",
+        "subject": "Subject",
+        "subjectPlaceholder": "Select a subject...",
+        "message": "Your Message",
+        "messagePlaceholder": "Describe your health concern or query..."
+      },
+      "subjects": [
+        "General Inquiry",
+        "Book Appointment",
+        "Treatment Information",
+        "Feedback / Suggestion",
+        "Emergency Consultation",
+        "Other"
+      ],
+      "required": "*",
+      "submitButton": "Send Message",
+      "sending": "Sending...",
+      "sendAnother": "Send Another Message"
+    },
+    "validation": {
+      "nameRequired": "Name is required",
+      "nameMinLength": "At least 3 characters",
+      "phoneRequired": "Phone is required",
+      "phoneInvalid": "Enter valid 10-digit mobile number",
+      "emailRequired": "Email is required",
+      "emailInvalid": "Enter a valid email",
+      "messageRequired": "Message is required",
+      "messageTooShort": "Message too short"
+    },
+    "success": {
+      "heading": "Message Sent!",
+      "message": "Thank you, <strong>{{name}}</strong>.<br/>Our team will respond within 24 hours."
+    },
+    "map": {
+      "heading": "Find Us on the Map",
+      "openMaps": "Open Maps",
+      "iframeTitle": "Clinic Location"
+    },
+    "hours": {
+      "heading": "Consultation Hours",
+      "offlineLabel": "Offline — In Clinic",
+      "onlineLabel": "Online — Video Call",
+      "schedule": [
+        {
+          "day": "Mon – Sun",
+          "time": "8:00 AM – 2:00 PM"
+        },
+        {
+          "day": "Mon – Sun",
+          "time": "4:00 PM – 6:00 PM"
+        }
+      ],
+      "onlineSchedule": {
+        "day": "Mon – Sun",
+        "time": "6:00 PM – 8:00 PM"
+      }
+    },
+    "cta": {
+      "callNow": "Call Now",
+      "emailUs": "Email Us"
+    },
+    "banner": {
+      "heading": "Authentic Care Since 1975",
+      "quote": "\"Serving humanity with pure Ayurveda.\"",
+      "attribution": "Vaidh Rajendra Singh & Dr. Lalitendra Singh"
+    },
+    "aria": {
+      "heroRegion": "Contact page hero section",
+      "infoCards": "Contact information cards",
+      "contactForm": "Contact form",
+      "mapSection": "Clinic map and hours",
+      "formName": "Enter your full name",
+      "formPhone": "Enter your 10-digit phone number",
+      "formEmail": "Enter your email address",
+      "formSubject": "Select a subject for your message",
+      "formMessage": "Type your message or health query",
+      "submitForm": "Submit contact form",
+      "callLink": "Call the clinic",
+      "emailLink": "Email the clinic",
+      "mapLink": "Open clinic location in Google Maps"
+    }
+  },
+  "doctorsPage": {
+    "meta": {
+      "title": "Our Doctors — Shree Mrikula Ji Ayurvedic Clinic",
+      "description": "Meet our expert Ayurvedic physicians — three generations of authentic healing wisdom."
+    },
+    "hero": {
+      "badge": "Meet Our Healers",
+      "title": "Our Expert Physicians",
+      "subtitle": "Three generations of authentic Ayurvedic expertise — from traditional Vaidh wisdom to modern BAMS certification."
+    },
+    "trustBar": {
+      "patients": "5,00,000+ Patients Treated",
+      "affiliated": "AYUSH & NIMA Affiliated",
+      "service": "50+ Years of Combined Service",
+      "natural": "100% Natural Treatments"
+    },
+    "section": {
+      "heading": "Our Healing Team",
+      "subtext": "Each doctor brings unique expertise. Book directly with your preferred physician below."
+    },
+    "card": {
+      "experience": "Experience",
+      "patients": "Patients",
+      "rating": "Rating",
+      "specialties": "Specialties",
+      "available": "Available",
+      "bookButton": "Book Appointment"
+    },
+    "loading": {
+      "cards": "Loading doctors..."
+    },
+    "cta": {
+      "heading": "Not Sure Which Doctor to Consult?",
+      "subtext": "Contact us and our team will guide you to the right specialist for your condition.",
+      "bookButton": "Book an Appointment",
+      "contactButton": "Contact Us"
+    }
+  },
+  "appointmentPage": {
+    "meta": {
+      "title": "Book Appointment — Shree Mrikula Ji Ayurvedic Clinic",
+      "description": "Book a physical or online Ayurvedic consultation with our expert physicians."
+    },
+    "hero": {
+      "badge": "Book an Appointment",
+      "title": "Schedule Your Healing Journey",
+      "subtitle": "Book a physical or online consultation with our expert Ayurvedic physicians.",
+      "loginRequired": "required to confirm booking",
+      "loginLink": "Login",
+      "prefillLabel": "Booking with:"
+    },
+    "steps": {
+      "step1": "Pick Date & Time",
+      "step2": "Your Details",
+      "step3": "Confirm"
+    },
+    "step1": {
+      "heading": "Pick a Date & Time",
+      "subtext": "Choose your doctor, date, consultation type, and 15-minute slot.",
+      "doctorLabel": "Select Doctor",
+      "required": "*",
+      "loadingDoctors": "Loading doctors...",
+      "preselectedFrom": "Pre-selected from doctor profile",
+      "changeDoctor": "Change",
+      "selectDoctorPrompt": "Please select a doctor to continue.",
+      "selectDoctorFirst": "Please select a doctor first to continue.",
+      "dateLabel": "Select Date",
+      "more": "More",
+      "consultTypeLabel": "Consultation Type",
+      "physical": {
+        "title": "Physical Consultation",
+        "subtitle": "Visit the clinic in person",
+        "days": "Mon – Sun",
+        "hours": "8:00 AM – 2:00 PM & 4:00 PM – 6:00 PM",
+        "slots": "15-min slots"
+      },
+      "online": {
+        "title": "Online Consultation",
+        "subtitle": "Video call from anywhere",
+        "days": "Mon – Sun",
+        "hours": "6:00 PM – 8:00 PM",
+        "slots": "15-min slots"
+      },
+      "physicalSlots": {
+        "heading": "Physical Consultation Slots",
+        "subtext": "Morning 8:00 AM – 2:00 PM & Evening 4:00 PM – 6:00 PM · Each slot is 15 minutes"
+      },
+      "onlineSlots": {
+        "heading": "Online Consultation Slots",
+        "subtext": "Evening · 6:00 PM – 8:00 PM · Each slot is 15 minutes"
+      },
+      "slotBooked": "Already booked"
+    },
+    "step2": {
+      "heading": "Your Details",
+      "subtext": "Please fill in accurate personal information.",
+      "fullName": "Full Name",
+      "fullNamePlaceholder": "Your full name",
+      "phone": "Phone Number",
+      "phonePlaceholder": "10-digit mobile",
+      "email": "Email Address",
+      "emailPlaceholder": "name@example.com",
+      "emailAutofilled": "✓ Auto-filled from your account",
+      "age": "Age",
+      "agePlaceholder": "Age in years",
+      "gender": "Gender",
+      "genderOptions": {
+        "male": "Male",
+        "female": "Female",
+        "other": "Other"
+      },
+      "notes": "Symptoms / Notes",
+      "notesPlaceholder": "Briefly describe symptoms or health concerns..."
+    },
+    "step3": {
+      "heading": "Confirm Your Appointment",
+      "subtext": "Review your details before confirming.",
+      "loginBanner": "You must",
+      "loginLink": "login or register",
+      "loginBannerSuffix": "to confirm this appointment.",
+      "physicalLabel": "Physical Consultation",
+      "physicalSub": "In-clinic visit · GT Road, Sikandrarao",
+      "onlineLabel": "Online Consultation",
+      "onlineSub": "Video call · Link will be sent to your email",
+      "summary": {
+        "date": "Date",
+        "time": "Time",
+        "slotSuffix": "(15-min slot)",
+        "patientName": "Patient Name",
+        "phone": "Phone",
+        "email": "Email",
+        "ageGender": "Age / Gender",
+        "ageGenderValue": "{{age}} years, {{gender}}",
+        "doctor": "Doctor",
+        "notes": "Notes"
+      },
+      "note": "Note:",
+      "confirmNote": "A confirmation will be sent to your phone and email.",
+      "physicalArrival": "Please arrive 10 minutes early.",
+      "onlineLink": "A video call link will be shared 15 minutes before your slot."
+    },
+    "nav": {
+      "back": "Back",
+      "backToDoctors": "Back to Doctors",
+      "continue": "Continue",
+      "confirmButton": "Confirm Appointment",
+      "loginToConfirm": "Login to Confirm",
+      "booking": "Booking..."
+    },
+    "success": {
+      "heading": "Appointment Booked!",
+      "subtext": "A confirmation will be sent to your phone and email shortly.",
+      "summary": {
+        "patient": "Patient",
+        "type": "Type",
+        "physical": "🏥 Physical Consultation",
+        "online": "💻 Online Consultation",
+        "date": "Date",
+        "time": "Time",
+        "phone": "Phone",
+        "email": "Email"
+      },
+      "bookAnother": "Book Another",
+      "viewBookings": "View My Bookings",
+      "dashboard": "Go to Dashboard"
+    },
+    "validation": {
+      "nameRequired": "Full name is required",
+      "nameMinLength": "At least 3 characters",
+      "nameLettersOnly": "Letters only",
+      "phoneRequired": "Phone is required",
+      "phoneInvalid": "Valid 10-digit Indian mobile",
+      "emailRequired": "Email is required",
+      "emailInvalid": "Valid email required",
+      "ageRequired": "Age is required",
+      "ageMin": "Age must be ≥ 1",
+      "ageMax": "Enter a valid age",
+      "notesRequired": "Please describe your symptoms or health concerns",
+      "notesTooShort": "Please provide more detail (at least 5 characters)",
+      "genderRequired": "Please select a gender"
+    },
+    "aria": {
+      "heroRegion": "Appointment booking page hero",
+      "stepsBar": "Booking steps progress",
+      "step1Region": "Step 1: Date and time selection",
+      "step2Region": "Step 2: Patient details form",
+      "step3Region": "Step 3: Appointment confirmation",
+      "slotGrid": "Available time slots",
+      "dateGrid": "Available dates",
+      "doctorGrid": "Select a doctor",
+      "consultTypeGrid": "Select consultation type",
+      "successRegion": "Appointment confirmed"
+    }
+  },
+  "products": {
+    "meta": {
+      "title": "Ayurvedic Products — Shree Mrikula Ji",
+      "description": "Browse authentic Ayurvedic formulations for immunity, organ health, respiratory care, and more."
+    },
+    "hero": {
+      "heading": "Ayurvedic Catalog",
+      "subheading": "Authentic formulations for total body transformation.",
+      "loginNotice": "Please",
+      "loginLink": "login",
+      "loginNoticeSuffix": "to add products to your cart",
+      "searchPlaceholder": "Search for a product or health concern...",
+      "clearSearch": "Clear search"
+    },
+    "badges": {
+      "natural": "100% Natural Guarantee",
+      "topRated": "Top Rated"
+    },
+    "featured": {
+      "dosageLabel": "Dosage: 1–2 tablets twice daily",
+      "benefit1Title": "Sharir Pushti:",
+      "benefit1Desc": "Builds a robust foundation and increases strength.",
+      "benefit2Title": "Medhya:",
+      "benefit2Desc": "Sharpens focus and reduces mental fatigue."
+    },
+    "card": {
+      "addToCart": "Add to Cart",
+      "loginToAdd": "Login to Add",
+      "inStock": "In Stock",
+      "outOfStock": "Out of Stock",
+      "priceLabel": "Price"
+    },
+    "loading": "Loading products...",
+    "empty": {
+      "noResults": "No products found matching \"{{query}}\"",
+      "noProducts": "No products available at this time."
+    },
+    "address": {
+      "modalTitle": "Delivery Address",
+      "modalEdit": "Change Address",
+      "modalSubtitle": "Enter your delivery details. Saved for future orders.",
+      "modalEditSubtitle": "Update your delivery details below.",
+      "country": "Country / Region",
+      "fullName": "Full Name (First and Last name)",
+      "mobile": "Mobile Number",
+      "mobileHint": "May be used to assist delivery",
+      "pincode": "Pincode",
+      "flat": "Flat, House no., Building, Company, Apartment",
+      "area": "Area, Street, Sector, Village",
+      "landmark": "Landmark",
+      "landmarkPlaceholder": "E.g. near Apollo hospital",
+      "city": "Town / City",
+      "state": "State",
+      "stateDefault": "Choose a state",
+      "cancel": "Cancel",
+      "saveBtn": "Save & Continue",
+      "updateBtn": "Update Address"
+    },
+    "validation": {
+      "nameRequired": "Full name is required",
+      "mobileRequired": "Mobile number is required",
+      "mobileInvalid": "Enter a valid 10-digit mobile number",
+      "pincodeRequired": "Pincode is required",
+      "pincodeInvalid": "Enter a valid 6-digit pincode",
+      "flatRequired": "House/Flat details are required",
+      "areaRequired": "Area/Street is required",
+      "cityRequired": "Town/City is required",
+      "stateRequired": "Please select a state"
+    },
+    "footer": "© 2026 Shree Mrikula ji Ayurvedic Clinic • Authenticity & Potency Guaranteed"
+  },
+  "cart": {
+    "meta": {
+      "title": "My Cart — Shree Mrikula Ji"
+    },
+    "heading": "My Cart",
+    "itemCount": "{{count}} item(s) in your cart",
+    "continueShopping": "Continue Shopping",
+    "empty": {
+      "heading": "Nothing here yet",
+      "subtext": "Browse our Ayurvedic catalog and add products to your cart.",
+      "browseBtn": "Browse Products"
+    },
+    "item": {
+      "removeLabel": "Remove item",
+      "clearAll": "Clear all items",
+      "decreaseQty": "Decrease quantity",
+      "increaseQty": "Increase quantity"
+    },
+    "summary": {
+      "heading": "Order Summary",
+      "deliverTo": "Deliver to",
+      "addressPlaceholder": "Address collected at checkout",
+      "items": "Items",
+      "subtotal": "Subtotal",
+      "delivery": "Delivery",
+      "deliveryValue": "As per location",
+      "total": "Total",
+      "pricingNote": "Contact clinic for rates",
+      "pricingLabel": "Pricing",
+      "checkoutBtn": "Enquire / Order",
+      "checkoutNote": "Address & payment in next step"
+    },
+    "checkout": {
+      "title": {
+        "address": "Delivery Address",
+        "payment": "Payment Method",
+        "processing": "Placing Order…",
+        "success": "Order Placed! 🎉"
+      },
+      "stepLabel": "Step {{step}} of 2",
+      "itemCount": "{{count}} item",
+      "itemCountPlural": "{{count}} items",
+      "backToAddress": "Back to address",
+      "close": "Close",
+      "country": "Country",
+      "addressFields": {
+        "fullName": "Full Name",
+        "mobile": "Mobile Number",
+        "pincode": "Pincode",
+        "flat": "Flat / House No. / Building",
+        "area": "Area / Street / Sector",
+        "landmark": "Landmark (optional)",
+        "city": "Town / City",
+        "state": "State",
+        "stateDefault": "Choose a state"
+      },
+      "continueBtn": "Continue to Payment",
+      "changeAddress": "Change address",
+      "orderItems": "Order Items",
+      "paymentHeading": "Select Payment Method",
+      "cod": {
+        "title": "Cash on Delivery",
+        "subtitle": "Pay with cash when your order arrives",
+        "notice": "Our team will confirm your order via call or WhatsApp before dispatch."
+      },
+      "upi": {
+        "title": "UPI",
+        "subtitle": "GPay, PhonePe, Paytm, etc.",
+        "whatsappNotice": "After placing your order, our payment QR code will be shared with you via WhatsApp for secure payment confirmation."
+      },
+      "confirmCod": "Confirm Order (COD)",
+      "confirmUpi": "Confirm Order (UPI)",
+      "processing": {
+        "heading": "Placing your order…",
+        "subtext": "Just a moment"
+      },
+      "success": {
+        "heading": "Order Confirmed!",
+        "message": "Your order has been placed. We'll contact you at",
+        "messageSuffix": "to confirm dispatch.",
+        "upiNote": "Our payment QR code will be shared with you via WhatsApp for secure payment confirmation.",
+        "upiNoteSuffix": "",
+        "viewOrders": "View My Orders",
+        "shopMore": "Shop More"
+      },
+      "validation": {
+        "nameRequired": "Required",
+        "mobileInvalid": "Valid 10-digit number required",
+        "pincodeInvalid": "Valid 6-digit pincode required",
+        "flatRequired": "Required",
+        "areaRequired": "Required",
+        "cityRequired": "Required",
+        "stateRequired": "Required"
+      },
+      "deliveredTo": "Delivering to"
+    }
+  },
+  "blog": {
+    "pageTitle": "Our Blog",
+    "pageSubtitle": "Expert insights on Ayurveda, wellness & natural living",
+    "badge": "Knowledge & Wellness",
+    "readMore": "Read More",
+    "backToBlogs": "Back to Blogs",
+    "allBlogs": "All Blogs",
+    "moreArticles": "More Articles",
+    "viewAllBlogs": "View All Blogs",
+    "notFound": "Blog Not Found",
+    "notFoundDesc": "This blog post is not available.",
+    "noBlogs": "No blogs available yet.",
+    "noBlogsDesc": "Check back soon for new content.",
+    "noOtherArticles": "No other articles yet.",
+    "loading": "Loading...",
+    "articles": "articles",
+    "couldNotLoad": "Could not load blogs."
+  }
+}

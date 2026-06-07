@@ -1,0 +1,58 @@
+/* src/App.css */
+
+/* ── Base reset ─────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ── Root font: Poppins (English default) ────────── */
+body {
+  font-family: 'Poppins', 'Noto Sans Devanagari', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Hindi mode: switch body to Noto Sans Devanagari ── */
+/* Applied by changeLanguage() in i18n/index.js          */
+body.lang-hi {
+  font-family: 'Noto Sans Devanagari', 'Poppins', sans-serif;
+  /* Slightly increased line-height for Devanagari readability */
+  line-height: 1.75;
+  /* Prevent layout shift from Devanagari's taller glyphs   */
+  word-break: keep-all;
+}
+
+/* ── Devanagari utility class (for shloka / Sanskrit) ── */
+.font-devanagari {
+  font-family: 'Noto Sans Devanagari', serif;
+}
+
+/* ── Marquee animation ───────────────────────────── */
+@keyframes marquee {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.marquee-track {
+  animation: marquee 25s linear infinite;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+/* ── Smooth language switcher transition ──────────── */
+/* Prevents jarring layout shifts when text changes length */
+.lang-switch-transition * {
+  transition: all 0.2s ease;
+}
+
+/* ── Scrollbar styling ───────────────────────────── */
+::-webkit-scrollbar        { width: 6px; }
+::-webkit-scrollbar-track  { background: #f1f5f9; }
+::-webkit-scrollbar-thumb  { background: #6ee7b7; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #34d399; }
