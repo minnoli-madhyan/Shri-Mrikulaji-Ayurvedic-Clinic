@@ -127,9 +127,9 @@ serve(async (req) => {
     return new Response("Method not allowed", { status: 405 });
   }
 
-  // verify_jwt is off (pg_cron sends no user JWT), so require a shared secret instead.
-  const CRON_SECRET = Deno.env.get("CRON_SECRET");
-  if (!CRON_SECRET || req.headers.get("x-cron-secret") !== CRON_SECRET) {
+  // verify_jwt is off (pg_cron sends no user JWT), so only the service-role key may call this.
+  const bearer = (req.headers.get("authorization") ?? "").replace(/^Bearer\s+/i, "");
+  if (!bearer || bearer !== SUPABASE_SERVICE_KEY) {
     return new Response("Forbidden", { status: 403 });
   }
 

@@ -25,11 +25,10 @@ entrypoint = "./functions/whatsapp-webhook/index.ts"
 
 [functions.appointment-reminders]
 enabled    = true
-verify_jwt = false          # cron pg_net calls don't send a JWT
+verify_jwt = false          # cron sends the service-role key as Bearer; the function checks it itself
 import_map = "./functions/appointment-reminders/deno.json"
 entrypoint = "./functions/appointment-reminders/index.ts"
 
-# Required secrets (CRON_SECRET: also send it as the `x-cron-secret` header from pg_cron)
 # Required secrets (set in Supabase Dashboard → Edge Functions → Secrets):
 #   SUPABASE_URL              — already present by default
 #   SUPABASE_SERVICE_ROLE_KEY — already present by default
@@ -39,5 +38,4 @@ entrypoint = "./functions/appointment-reminders/index.ts"
 #   WHATSAPP_APP_SECRET       — Meta app secret (webhook signature check)
 #   WHATSAPP_WEBHOOK_VERIFY_TOKEN — token you set in the Meta webhook config
 #   ADMIN_WHATSAPP            — clinic admin number, e.g. 919876543210
-#   CRON_SECRET               — random string; pg_cron sends it as x-cron-secret
 #   ALLOWED_ORIGINS           — optional, comma-separated site origins

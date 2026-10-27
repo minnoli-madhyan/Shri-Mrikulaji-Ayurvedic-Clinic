@@ -41,10 +41,10 @@ Supabase SQL editor — `update profiles set role = 'admin' where id = '<user id
 ## Edge function secrets
 Set in Supabase → Edge Functions → Secrets:
 `WHATSAPP_TOKEN`, `WHATSAPP_PHONE_NUMBER_ID`, `WHATSAPP_APP_SECRET`, `WHATSAPP_WEBHOOK_VERIFY_TOKEN`,
-`ADMIN_WHATSAPP` (e.g. `919876543210`), `CRON_SECRET`, optional `ALLOWED_ORIGINS`.
+`ADMIN_WHATSAPP` (e.g. `919876543210`), optional `ALLOWED_ORIGINS`.
 
 Deploy: `supabase functions deploy send-whatsapp whatsapp-webhook appointment-reminders`.
-The cron job must send the `x-cron-secret` header (see the commented SQL in the reminders migration).
+The reminders cron job must send `Authorization: Bearer <service-role key>` (see the SQL in the reminders migration).
 
 ## Deploy
 ```bash

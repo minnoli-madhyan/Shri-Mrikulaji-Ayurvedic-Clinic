@@ -41,7 +41,7 @@ CREATE POLICY "service_role_all" ON whatsapp_message_log
 --       url     := current_setting('app.supabase_url') || '/functions/v1/appointment-reminders',
 --       headers := jsonb_build_object(
 --         'Content-Type',  'application/json',
---         'x-cron-secret', current_setting('app.cron_secret')
+--         'Authorization', 'Bearer ' || current_setting('app.service_role_key')
 --       ),
 --       body    := '{}'::jsonb
 --     );
