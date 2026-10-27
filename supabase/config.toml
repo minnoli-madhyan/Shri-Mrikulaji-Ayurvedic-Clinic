@@ -25,7 +25,7 @@ entrypoint = "./functions/whatsapp-webhook/index.ts"
 
 [functions.appointment-reminders]
 enabled    = true
-verify_jwt = false          # cron sends the service-role key as Bearer; the function checks it itself
+verify_jwt = true           # platform verifies the JWT; the function then requires role = service_role
 import_map = "./functions/appointment-reminders/deno.json"
 entrypoint = "./functions/appointment-reminders/index.ts"
 

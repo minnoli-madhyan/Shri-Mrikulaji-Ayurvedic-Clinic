@@ -127,9 +127,15 @@ serve(async (req) => {
     return new Response("Method not allowed", { status: 405 });
   }
 
-  // verify_jwt is off (pg_cron sends no user JWT), so only the service-role key may call this.
+  // verify_jwt is on, so the platform has already checked the token's signature.
+  // Only the service-role key (what pg_cron sends) may trigger reminders; the public anon key must not.
   const bearer = (req.headers.get("authorization") ?? "").replace(/^Bearer\s+/i, "");
-  if (!bearer || bearer !== SUPABASE_SERVICE_KEY) {
+  let role: string | undefined;
+  try {
+    const b64 = bearer.split(".")[1].replace(/-/g, "+").replace(/_/g, "/");
+    role = JSON.parse(atob(b64 + "=".repeat((4 - (b64.length % 4)) % 4))).role;
+  } catch { /* not a JWT */ }
+  if (role !== "service_role") {
     return new Response("Forbidden", { status: 403 });
   }
 

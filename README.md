@@ -44,7 +44,7 @@ Set in Supabase → Edge Functions → Secrets:
 `ADMIN_WHATSAPP` (e.g. `919876543210`), optional `ALLOWED_ORIGINS`.
 
 Deploy: `supabase functions deploy send-whatsapp whatsapp-webhook appointment-reminders`.
-The reminders cron job must send `Authorization: Bearer <service-role key>` (see the SQL in the reminders migration).
+The reminders cron job must send `Authorization: Bearer <service-role key>` (the function rejects any other role) (see the SQL in the reminders migration).
 
 ## Deploy
 ```bash
