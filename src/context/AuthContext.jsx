@@ -56,7 +56,7 @@ export const AuthProvider = ({ children }) => {
     const { data, error } = await supabase.auth.signUp({
       email,
       password,
-      options: { data: { full_name: name, phone, role: 'patient' } },
+      options: { data: { full_name: name, phone } },   // role is assigned server-side
     });
     if (error || !data?.session) return { data, error };
 

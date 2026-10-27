@@ -26,10 +26,10 @@ const memberAccents = [
 ];
 const memberInitials = ['RS', 'LS', 'MS', 'TS'];
 const memberPhotos = [
-  '/images/doctors/Rajendra_singh.png',
-  '/images/doctors/Lalitendra_Singh.png',
-  '/images/doctors/Mridul_Sengar.png',
-  '/images/doctors/clinic_manager.png',
+  '/images/doctors/Rajendra_singh.webp',
+  '/images/doctors/Lalitendra_Singh.webp',
+  '/images/doctors/Mridul_Sengar.webp',
+  '/images/doctors/clinic_manager.webp',
 ];
 
 /* ─── Team Card ──────────────────────────────────────────────────── */

@@ -13,6 +13,23 @@ import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 const VERIFY_TOKEN         = Deno.env.get("WHATSAPP_WEBHOOK_VERIFY_TOKEN")!;
 const SUPABASE_URL         = Deno.env.get("SUPABASE_URL")!;
 const SUPABASE_SERVICE_KEY = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
+const APP_SECRET           = Deno.env.get("WHATSAPP_APP_SECRET")!;   // Meta App Dashboard → Settings → Basic
+
+// Verify Meta's X-Hub-Signature-256 header (HMAC-SHA256 of the raw body).
+async function validSignature(raw: string, header: string | null): Promise<boolean> {
+  if (!header?.startsWith("sha256=")) return false;
+  const key = await crypto.subtle.importKey(
+    "raw", new TextEncoder().encode(APP_SECRET),
+    { name: "HMAC", hash: "SHA-256" }, false, ["sign"],
+  );
+  const mac = new Uint8Array(await crypto.subtle.sign("HMAC", key, new TextEncoder().encode(raw)));
+  const expected = Array.from(mac).map((b) => b.toString(16).padStart(2, "0")).join("");
+  const got = header.slice(7);
+  if (got.length !== expected.length) return false;
+  let diff = 0;
+  for (let i = 0; i < got.length; i++) diff |= got.charCodeAt(i) ^ expected.charCodeAt(i);
+  return diff === 0;
+}
 
 // Lazy-init so GET verification path doesn't need DB
 let _supabase: ReturnType<typeof createClient> | null = null;
@@ -82,9 +99,15 @@ serve(async (req) => {
   if (req.method === "POST") {
 
     // Parse body — always return 200 even on parse failure
+    const raw = await req.text();
+    if (!(await validSignature(raw, req.headers.get("x-hub-signature-256")))) {
+      console.warn("[whatsapp-webhook] Rejected POST with invalid signature");
+      return new Response("Forbidden", { status: 403 });
+    }
+
     let payload: any;
     try {
-      payload = await req.json();
+      payload = JSON.parse(raw);
     } catch {
       console.error("[whatsapp-webhook] Failed to parse JSON payload");
       return new Response("OK", { status: 200 });
@@ -127,7 +150,7 @@ serve(async (req) => {
             const { data: appts } = await db()
               .from("appointments")
               .select("id")
-              .eq("patient_phone", phone.replace(/^91/, ""))   // stored without 91 prefix
+              .like("patient_phone", `%${phone.slice(-10)}`)   // match on last 10 digits, whatever format was stored
               .eq("status", "confirmed")
               .order("date", { ascending: true })
               .limit(1);

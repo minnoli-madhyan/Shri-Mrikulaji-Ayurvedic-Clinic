@@ -13,8 +13,7 @@ const PHONE_NUMBER_ID      = Deno.env.get("WHATSAPP_PHONE_NUMBER_ID")!;
 const WA_API_URL           = `https://graph.facebook.com/v19.0/${PHONE_NUMBER_ID}/messages`;
 
 const corsHeaders = {
-  "Access-Control-Allow-Origin":  "*",
-  "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
+    "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
 };
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
@@ -126,6 +125,12 @@ serve(async (req) => {
 
   if (req.method !== "POST") {
     return new Response("Method not allowed", { status: 405 });
+  }
+
+  // verify_jwt is off (pg_cron sends no user JWT), so require a shared secret instead.
+  const CRON_SECRET = Deno.env.get("CRON_SECRET");
+  if (!CRON_SECRET || req.headers.get("x-cron-secret") !== CRON_SECRET) {
+    return new Response("Forbidden", { status: 403 });
   }
 
   const supabase = createClient(SUPABASE_URL, SUPABASE_SERVICE_KEY);

@@ -1,14 +1,51 @@
 // supabase/functions/send-whatsapp/index.ts
-import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
+import { serve }        from "https://deno.land/std@0.168.0/http/server.ts";
+import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 
 const WHATSAPP_TOKEN  = Deno.env.get("WHATSAPP_TOKEN")!;
 const PHONE_NUMBER_ID = Deno.env.get("WHATSAPP_PHONE_NUMBER_ID")!;
 const BASE_URL        = `https://graph.facebook.com/v19.0/${PHONE_NUMBER_ID}/messages`;
 
-const corsHeaders = {
-  "Access-Control-Allow-Origin":  "*",
-  "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
+const SUPABASE_URL      = Deno.env.get("SUPABASE_URL")!;
+const SUPABASE_ANON_KEY = Deno.env.get("SUPABASE_ANON_KEY")!;
+const SUPABASE_SERVICE  = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
+const ADMIN_PHONE       = Deno.env.get("ADMIN_WHATSAPP")!;          // e.g. 919876543210
+const ALLOWED_ORIGINS   = (Deno.env.get("ALLOWED_ORIGINS") ?? "https://shrimac.com,https://www.shrimac.com,http://localhost:5173")
+  .split(",").map((o) => o.trim());
+
+// Who may trigger which message.
+//   public — anyone (guest booking / checkout); recipient is forced to ADMIN_PHONE
+//   user   — any signed-in user
+//   staff  — signed-in admin or doctor only
+const POLICY: Record<string, "public" | "user" | "staff"> = {
+  admin_appt_alert:         "public",
+  admin_order_alert:        "user",
+  order_confirmation:       "user",
+  appointment_confirmation: "staff",
+  appointment_reminder:     "staff",
+  order_tracking:           "staff",
 };
+const ADMIN_ONLY_RECIPIENT = new Set(["admin_appt_alert", "admin_order_alert"]);
+
+// Best-effort per-IP rate limit (in-memory; resets when the function cold-starts).
+const hits = new Map<string, number[]>();
+function rateLimited(key: string, max = 10, windowMs = 60_000): boolean {
+  const now  = Date.now();
+  const list = (hits.get(key) ?? []).filter((t) => now - t < windowMs);
+  list.push(now);
+  hits.set(key, list);
+  return list.length > max;
+}
+
+function corsFor(req: Request) {
+  const origin = req.headers.get("origin") ?? "";
+  return {
+    "Access-Control-Allow-Origin":  ALLOWED_ORIGINS.includes(origin) ? origin : ALLOWED_ORIGINS[0],
+    "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
+    "Vary": "Origin",
+  };
+}
+let corsHeaders: Record<string, string> = corsFor(new Request("https://x"));
 
 // ── Structured error helper ───────────────────────────────────────────────────
 function errorResponse(code: string, message: string, status: number) {
@@ -30,19 +67,6 @@ function buildBody(
     ({ type: "text", text: (val ?? fallback).trim() || fallback });
 
   switch (type) {
-
-    case "otp":
-      // smac_otp — no body parameters (OTP injected by Meta via button component if needed)
-      return {
-        body: {
-          messaging_product: "whatsapp", to, type: "template",
-          template: {
-            name:     "smac_otp",
-            language: { code: "en_US" },
-            components: [{ type: "body" }],
-          },
-        },
-      };
 
     case "appointment_confirmation":
       // smac_ap_confirm — triggered when admin/doctor sets status → "confirmed"
@@ -190,8 +214,17 @@ function buildBody(
 
 // ── Request handler ───────────────────────────────────────────────────────────
 serve(async (req) => {
+  corsHeaders = corsFor(req);
   if (req.method === "OPTIONS") {
     return new Response("ok", { headers: corsHeaders });
+  }
+  if (req.method !== "POST") {
+    return errorResponse("METHOD_NOT_ALLOWED", "Use POST", 405);
+  }
+
+  const ip = req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "unknown";
+  if (rateLimited(ip)) {
+    return errorResponse("RATE_LIMITED", "Too many requests", 429);
   }
 
   // ── Parse body ────────────────────────────────────────────────────────────
@@ -206,13 +239,43 @@ serve(async (req) => {
   if (!type || typeof type !== "string") {
     return errorResponse("MISSING_FIELD", "Field 'type' is required", 400);
   }
-  if (!to || typeof to !== "string" || !/^\d{10,15}$/.test(to)) {
+  if (!ADMIN_ONLY_RECIPIENT.has(type) && (!to || typeof to !== "string" || !/^\d{10,15}$/.test(to))) {
     return errorResponse(
       "INVALID_PHONE",
       `Field 'to' must be a numeric phone number (10-15 digits). Got: "${to}"`,
       400,
     );
   }
+
+  // ── Authorisation ─────────────────────────────────────────────────────────
+  const level = POLICY[type];
+  if (!level) {
+    return errorResponse("VALIDATION_ERROR", `Unknown message type: "${type}"`, 400);
+  }
+
+  if (level !== "public") {
+    const jwt = (req.headers.get("authorization") ?? "").replace(/^Bearer\s+/i, "");
+    const userClient = createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
+      global: { headers: { Authorization: `Bearer ${jwt}` } },
+    });
+    const { data: { user } } = await userClient.auth.getUser(jwt);
+    if (!user) {
+      return errorResponse("UNAUTHORIZED", "Sign in to use this endpoint", 401);
+    }
+    if (level === "staff") {
+      const admin = createClient(SUPABASE_URL, SUPABASE_SERVICE);
+      const { data: prof } = await admin.from("profiles").select("role").eq("id", user.id).single();
+      if (!prof || !["admin", "doctor"].includes(prof.role)) {
+        return errorResponse("FORBIDDEN", "Staff only", 403);
+      }
+    }
+    if (rateLimited(`user:${user.id}`, 30)) {
+      return errorResponse("RATE_LIMITED", "Too many requests", 429);
+    }
+  }
+
+  // Admin alerts always go to the clinic's own number, never a client-supplied one.
+  if (ADMIN_ONLY_RECIPIENT.has(type)) to = ADMIN_PHONE;
 
   // ── Build template body ───────────────────────────────────────────────────
   const result = buildBody(type, to, data);

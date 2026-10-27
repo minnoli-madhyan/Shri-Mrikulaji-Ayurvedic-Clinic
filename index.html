@@ -2,27 +2,50 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/images/SMAC_logo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shree Mrikula Ji — Ayurvedic Clinic</title>
+    <meta name="description" content="Shree Mrikula Ji Ayurvedic Clinic — authentic Ayurvedic consultation, Panchakarma and herbal medicines since 1975. Book an appointment online." />
+    <meta name="theme-color" content="#065f46" />
+    <link rel="canonical" href="https://shrimac.com/" />
+    <link rel="icon" type="image/webp" href="/images/SMAC_logo.webp" />
+
+    <!-- Open Graph / Twitter -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Shree Mrikula Ji Ayurvedic Clinic" />
+    <meta property="og:title" content="Shree Mrikula Ji — Ayurvedic Clinic" />
+    <meta property="og:description" content="Authentic Ayurvedic care since 1975. Book an appointment online or visit our clinic." />
+    <meta property="og:url" content="https://shrimac.com/" />
+    <meta property="og:image" content="https://shrimac.com/images/hero.webp" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Structured data for search engines -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "MedicalClinic",
+        "name": "Shree Mrikula Ji Ayurvedic Clinic",
+        "url": "https://shrimac.com/",
+        "image": "https://shrimac.com/images/hero.webp",
+        "foundingDate": "1975",
+        "medicalSpecialty": "Ayurveda"
+      }
+    </script>
 
     <!-- Preconnect for performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-
-    <!-- English font (Poppins) + Hindi font (Noto Sans Devanagari) -->
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Shree Mrikula Ji — Ayurvedic Clinic</title>
-
-    <!-- GSAP Core + ScrollTrigger via CDN -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <!-- GSAP (used via window.gsap in src/hooks/useGSAP.js); defer keeps it from blocking first paint -->
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <link rel="preload" as="image" href="/images/hero.webp" type="image/webp" />
   </head>
   <body>
     <div id="root"></div>
+    <noscript>This site needs JavaScript. Call the clinic to book an appointment.</noscript>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

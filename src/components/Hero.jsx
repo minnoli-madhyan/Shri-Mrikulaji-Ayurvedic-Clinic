@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Calendar, ShoppingBag } from "lucide-react";
-import heroImg from "/images/hero.jpg";
+import heroImg from "/images/hero.webp";
 import { useAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import AuthModal from "../components/AuthModal";

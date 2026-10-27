@@ -23,3 +23,14 @@ Thumbs.db
 # IDE Files
 .vscode/
 .idea/
+# Supabase CLI / Firebase local state (contains project ids)
+supabase/.temp/
+supabase/.branches/
+.firebase/
+
+# Original images kept locally by scripts/optimize-images.mjs
+public/images/_originals/
+
+# Env (keep the example)
+.env*
+!.env.example

@@ -12,7 +12,7 @@ entrypoint = "./functions/send-whatsapp/index.ts"
 
 [functions.whatsapp-webhook]
 enabled = true
-verify_jwt = true
+verify_jwt = false   # Meta does not send a Supabase JWT; requests are authenticated by HMAC signature instead
 import_map = "./functions/whatsapp-webhook/deno.json"
 # Uncomment to specify a custom file path to the entrypoint.
 # Supported file extensions are: .ts, .js, .mjs, .jsx, .tsx
@@ -29,9 +29,15 @@ verify_jwt = false          # cron pg_net calls don't send a JWT
 import_map = "./functions/appointment-reminders/deno.json"
 entrypoint = "./functions/appointment-reminders/index.ts"
 
+# Required secrets (CRON_SECRET: also send it as the `x-cron-secret` header from pg_cron)
 # Required secrets (set in Supabase Dashboard → Edge Functions → Secrets):
 #   SUPABASE_URL              — already present by default
 #   SUPABASE_SERVICE_ROLE_KEY — already present by default
 #   SUPABASE_ANON_KEY         — already present by default
 #   WHATSAPP_TOKEN            — your Meta Graph API token
 #   WHATSAPP_PHONE_NUMBER_ID  — your Meta phone number ID
+#   WHATSAPP_APP_SECRET       — Meta app secret (webhook signature check)
+#   WHATSAPP_WEBHOOK_VERIFY_TOKEN — token you set in the Meta webhook config
+#   ADMIN_WHATSAPP            — clinic admin number, e.g. 919876543210
+#   CRON_SECRET               — random string; pg_cron sends it as x-cron-secret
+#   ALLOWED_ORIGINS           — optional, comma-separated site origins

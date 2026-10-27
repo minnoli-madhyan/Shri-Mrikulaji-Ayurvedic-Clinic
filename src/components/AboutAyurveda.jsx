@@ -35,7 +35,7 @@ const AboutAyurveda = () => {
             whileHover={{ y: -6, scale: 1.02, boxShadow: "0 25px 50px rgba(0,0,0,0.18)" }}
           >
             <img
-              src="/images/ayurveda.png"
+              src="/images/ayurveda.webp"
               alt={t("about.imageAlt")}
               className="w-full h-[380px] object-contain bg-[#fcf3e8]"
             />

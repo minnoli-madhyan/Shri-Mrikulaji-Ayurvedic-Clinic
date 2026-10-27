@@ -1,10 +1,12 @@
 // src/lib/whatsapp.js
-// Calls the edge function directly via fetch — identical to how Thunder Client tests it.
-// This bypasses supabase.functions.invoke so JWT/RLS issues can never block the WA send.
+// Calls the send-whatsapp edge function. The function decides who may send what:
+//   - admin alerts always go to the clinic's number (set server-side as ADMIN_WHATSAPP)
+//   - patient/staff messages need a signed-in user (staff-only for confirmations)
+import { supabase } from './supabase';
 
 const SUPABASE_URL      = import.meta.env.VITE_SUPABASE_URL;
 const SUPABASE_ANON_KEY = import.meta.env.VITE_SUPABASE_ANON_KEY;
-const ADMIN_PHONE       = import.meta.env.VITE_ADMIN_WHATSAPP; // e.g. 919876543210
+const ADMIN_PLACEHOLDER = '910000000000'; // ignored by the server for admin_* alerts
 
 // Normalize phone: strip +, spaces, dashes → ensure 91XXXXXXXXXX
 const normalizePhone = (phone) => {
@@ -16,11 +18,13 @@ const normalizePhone = (phone) => {
 
 export const sendWhatsApp = async (type, phone, data) => {
   try {
+    const { data: { session } } = await supabase.auth.getSession();
     const res = await fetch(`${SUPABASE_URL}/functions/v1/send-whatsapp`, {
       method: 'POST',
       headers: {
         'Content-Type':  'application/json',
-        'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+        'apikey':        SUPABASE_ANON_KEY,
+        'Authorization': `Bearer ${session?.access_token ?? SUPABASE_ANON_KEY}`,
       },
       body: JSON.stringify({ type, to: normalizePhone(phone), data }),
     });
@@ -32,7 +36,6 @@ export const sendWhatsApp = async (type, phone, data) => {
       return { result: null, error: result };
     }
 
-    console.log(`[WhatsApp] OK type=${type} to=${normalizePhone(phone)}`, result);
     return { result, error: null };
 
   } catch (err) {
@@ -42,9 +45,6 @@ export const sendWhatsApp = async (type, phone, data) => {
 };
 
 // ── Convenience wrappers ──────────────────────────────────────
-
-export const sendOTP = (phone, otp) =>
-  sendWhatsApp('otp', phone, { otp });
 
 export const sendAppointmentConfirmation = (phone, { patientName, doctorName, date, time, consultType }) =>
   sendWhatsApp('appointment_confirmation', phone, {
@@ -64,13 +64,11 @@ export const sendOrderConfirmation = (phone, { patientName, orderId, total }) =>
 export const sendOrderTracking = (phone, { orderId, status }) =>
   sendWhatsApp('order_tracking', phone, { orderId, status });
 
-// ── Admin alert helpers (always sent to ADMIN_PHONE) ──────────
+// ── Admin alert helpers (server forces the clinic number) ──────────
 export const sendAdminOrderAlert = ({ customerName, phone, orderId, items, total }) => {
-  if (!ADMIN_PHONE) { console.warn('[WhatsApp] VITE_ADMIN_WHATSAPP not set — skipping admin order alert'); return; }
-  return sendWhatsApp('admin_order_alert', ADMIN_PHONE, { customerName, phone, orderId, items, total });
+  return sendWhatsApp('admin_order_alert', ADMIN_PLACEHOLDER, { customerName, phone, orderId, items, total });
 };
 
 export const sendAdminApptAlert = ({ patientName, phone, doctorName, dateTime }) => {
-  if (!ADMIN_PHONE) { console.warn('[WhatsApp] VITE_ADMIN_WHATSAPP not set — skipping admin appt alert'); return; }
-  return sendWhatsApp('admin_appt_alert', ADMIN_PHONE, { patientName, phone, doctorName, dateTime });
+  return sendWhatsApp('admin_appt_alert', ADMIN_PLACEHOLDER, { patientName, phone, doctorName, dateTime });
 };

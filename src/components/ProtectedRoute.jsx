@@ -38,7 +38,7 @@ const ProtectedRoute = ({ children, role }) => {
     const redirectMap = {
       admin:   '/admin-dashboard',
       doctor:  '/doctor-dashboard',
-      patient: '/patient-dashboard',
+      patient: '/',
     };
     return <Navigate to={redirectMap[profile.role] ?? '/'} replace />;
   }

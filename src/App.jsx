@@ -1,8 +1,8 @@
 // src/App.jsx
-// CHANGE: Added /reset-password route (no Header/Footer, no auth guard)
+// Pages are lazy-loaded so visitors don't download the admin/doctor dashboards.
 
-import React, { useEffect } from 'react';
-import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
+import React, { useEffect, lazy, Suspense } from 'react';
+import { BrowserRouter, Routes, Route, Link, useLocation } from 'react-router-dom';
 import { CartProvider }    from './context/CartContext';
 import { AuthProvider }    from './context/AuthContext';
 import ProtectedRoute      from './components/ProtectedRoute';
@@ -10,20 +10,32 @@ import ScrollToTop         from './ScrollToTop';
 import Header              from './components/Header';
 import Footer              from './components/Footer';
 import Home                from './pages/Home';
-import About               from './pages/AboutUs';
-import Services            from './pages/Services';
-import Products            from './pages/products';
-import History             from './pages/History';
-import Contact             from './pages/ContactUs';
-import Cart                from './pages/Cart';
-import Doctors             from './pages/Doctors';
-import AppointmentBooking  from './pages/AppointmentBooking';
-import AdminDashboard      from './pages/AdminDashboard';
-import DoctorDashboard     from './pages/DoctorDashboard';
-import Blogs               from './pages/Blogs';
-import BlogPost            from './pages/BlogPost';
-import ResetPassword       from './pages/ResetPassword';   // ← NEW
+const About = lazy(() => import('./pages/AboutUs'));
+const Services = lazy(() => import('./pages/Services'));
+const Products = lazy(() => import('./pages/products'));
+const History = lazy(() => import('./pages/History'));
+const Contact = lazy(() => import('./pages/ContactUs'));
+const Cart = lazy(() => import('./pages/Cart'));
+const Doctors = lazy(() => import('./pages/Doctors'));
+const AppointmentBooking = lazy(() => import('./pages/AppointmentBooking'));
+const AdminDashboard = lazy(() => import('./pages/AdminDashboard'));
+const DoctorDashboard = lazy(() => import('./pages/DoctorDashboard'));
+const Blogs = lazy(() => import('./pages/Blogs'));
+const BlogPost = lazy(() => import('./pages/BlogPost'));
+const ResetPassword = lazy(() => import('./pages/ResetPassword'));
 import { useTranslation }  from 'react-i18next';
+
+const PageLoader = () => (
+  <div className="min-h-[60vh] flex items-center justify-center text-sm text-emerald-800/60 animate-pulse">Loading…</div>
+);
+
+const NotFound = () => (
+  <div className="min-h-[60vh] flex flex-col items-center justify-center gap-3 text-center px-4">
+    <h1 className="text-5xl font-bold text-emerald-800">404</h1>
+    <p className="text-gray-600">This page could not be found.</p>
+    <Link to="/" className="px-5 py-2 rounded-full bg-emerald-700 text-white text-sm">Back to home</Link>
+  </div>
+);
 
 // Dashboard routes + reset-password skip shared Header/Footer
 const DASHBOARD_PATHS = ['/admin-dashboard', '/doctor-dashboard', '/reset-password'];
@@ -58,6 +70,7 @@ const App = () => (
         <MetaUpdater />
         <ScrollToTop />
         <Layout>
+          <Suspense fallback={<PageLoader />}>
           <Routes>
             {/* Public routes */}
             <Route path="/"            element={<Home />} />
@@ -84,8 +97,9 @@ const App = () => (
             } />
 
             {/* Catch-all */}
-            <Route path="*" element={<Home />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
+          </Suspense>
         </Layout>
       </CartProvider>
     </AuthProvider>

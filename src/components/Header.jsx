@@ -75,7 +75,7 @@ const Header = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3">
             <img
-              src="/images/SMAC_logo.png"
+              src="/images/SMAC_logo.webp"
               alt={t("brand.logoAlt")}
               className="h-12 w-12 object-contain"
             />
