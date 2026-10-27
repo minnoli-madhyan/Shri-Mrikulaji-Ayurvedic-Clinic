@@ -19,7 +19,8 @@ BEGIN
     NEW.raw_user_meta_data->>'full_name',
     NEW.raw_user_meta_data->>'phone',
     'patient'
-  );
+  )
+  ON CONFLICT (id) DO NOTHING;
   RETURN NEW;
 END;
 $$;
@@ -41,19 +42,29 @@ RETURNS BOOLEAN LANGUAGE sql STABLE SECURITY DEFINER SET search_path = public AS
 $$;
 
 -- ── 2. Profiles: block role changes by non-admins ───────────────────────────
-DROP POLICY IF EXISTS "Admins can view all profiles" ON public.profiles;
+-- Drop every existing profiles policy except the service-role one: older ones
+-- (e.g. a self-update policy with no WITH CHECK) would otherwise stay permissive.
+DO $$
+DECLARE r RECORD;
+BEGIN
+  FOR r IN SELECT policyname FROM pg_policies
+            WHERE schemaname = 'public' AND tablename = 'profiles'
+              AND policyname <> 'admin_all'
+  LOOP
+    EXECUTE format('DROP POLICY %I ON public.profiles', r.policyname);
+  END LOOP;
+END $$;
+
+CREATE POLICY "Users can view their own profile"
+  ON public.profiles FOR SELECT USING (auth.uid() = id);
 CREATE POLICY "Admins can view all profiles"
   ON public.profiles FOR SELECT USING (public.is_admin());
-
-DROP POLICY IF EXISTS "Admins can update all profiles" ON public.profiles;
+CREATE POLICY "Users can insert their own patient profile"
+  ON public.profiles FOR INSERT WITH CHECK (auth.uid() = id AND role = 'patient');
+CREATE POLICY "Users can update their own profile"
+  ON public.profiles FOR UPDATE USING (auth.uid() = id) WITH CHECK (auth.uid() = id);
 CREATE POLICY "Admins can update all profiles"
   ON public.profiles FOR UPDATE USING (public.is_admin());
-
-DROP POLICY IF EXISTS "Users can update their own profile" ON public.profiles;
-CREATE POLICY "Users can update their own profile"
-  ON public.profiles FOR UPDATE
-  USING (auth.uid() = id)
-  WITH CHECK (auth.uid() = id);
 
 CREATE OR REPLACE FUNCTION public.protect_profile_role()
 RETURNS TRIGGER LANGUAGE plpgsql SECURITY DEFINER SET search_path = public AS $$
@@ -81,10 +92,6 @@ DROP POLICY IF EXISTS "Only admins can manage products" ON public.products;
 CREATE POLICY "Only admins can manage products"
   ON public.products FOR ALL USING (public.is_admin()) WITH CHECK (public.is_admin());
 
-DROP POLICY IF EXISTS "Admins can manage all orders" ON public.orders;
-CREATE POLICY "Admins can manage all orders"
-  ON public.orders FOR ALL USING (public.is_admin()) WITH CHECK (public.is_admin());
-
 DROP POLICY IF EXISTS "Only admins can view messages"   ON public.contact_messages;
 DROP POLICY IF EXISTS "Only admins can update messages" ON public.contact_messages;
 DROP POLICY IF EXISTS "Only admins can delete messages" ON public.contact_messages;
@@ -103,8 +110,21 @@ ALTER TABLE public.contact_messages
   );
 
 -- ── 4 + 5. Appointments ─────────────────────────────────────────────────────
-DROP POLICY IF EXISTS "Admins can manage all appointments" ON public.appointments;
-DROP POLICY IF EXISTS "Anyone can book an appointment"     ON public.appointments;
+-- Remove every existing appointments policy. In particular the old
+-- "Anyone can view appointments for slot availability" (USING true) exposed every
+-- patient's name, phone, e-mail and notes to anyone holding the public anon key.
+DO $$
+DECLARE r RECORD;
+BEGIN
+  FOR r IN SELECT policyname FROM pg_policies
+            WHERE schemaname = 'public' AND tablename = 'appointments'
+  LOOP
+    EXECUTE format('DROP POLICY %I ON public.appointments', r.policyname);
+  END LOOP;
+END $$;
+
+CREATE POLICY "Patients can view their own appointments"
+  ON public.appointments FOR SELECT USING (auth.uid() = patient_id);
 
 -- Admin: everything
 CREATE POLICY "Admins can manage all appointments"
@@ -146,8 +166,34 @@ CREATE UNIQUE INDEX IF NOT EXISTS uniq_active_appointment_slot
   ON public.appointments (doctor_name, date, time_slot)
   WHERE status IN ('pending', 'confirmed');
 
+-- Slot availability without exposing patient data: returns only the taken time slots.
+CREATE OR REPLACE FUNCTION public.get_booked_slots(p_doctor TEXT, p_date DATE)
+RETURNS TABLE (time_slot TEXT)
+LANGUAGE sql STABLE SECURITY DEFINER SET search_path = public AS $$
+  SELECT a.time_slot FROM public.appointments a
+   WHERE a.doctor_name = p_doctor AND a.date = p_date
+     AND a.status IN ('pending', 'confirmed');
+$$;
+REVOKE ALL ON FUNCTION public.get_booked_slots(TEXT, DATE) FROM PUBLIC;
+GRANT EXECUTE ON FUNCTION public.get_booked_slots(TEXT, DATE) TO anon, authenticated;
+
 -- ── 6. Orders: patient can cancel own pending order ─────────────────────────
-DROP POLICY IF EXISTS "Users can cancel their own orders" ON public.orders;
+DO $$
+DECLARE r RECORD;
+BEGIN
+  FOR r IN SELECT policyname FROM pg_policies
+            WHERE schemaname = 'public' AND tablename = 'orders'
+  LOOP
+    EXECUTE format('DROP POLICY %I ON public.orders', r.policyname);
+  END LOOP;
+END $$;
+
+CREATE POLICY "Users can view their own orders"
+  ON public.orders FOR SELECT USING (auth.uid() = user_id);
+CREATE POLICY "Users can place orders"
+  ON public.orders FOR INSERT WITH CHECK (auth.uid() = user_id);
+CREATE POLICY "Admins can manage all orders"
+  ON public.orders FOR ALL USING (public.is_admin()) WITH CHECK (public.is_admin());
 CREATE POLICY "Users can cancel their own orders"
   ON public.orders FOR UPDATE
   USING (auth.uid() = user_id AND status = 'pending')

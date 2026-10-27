@@ -196,9 +196,8 @@ const AppointmentBooking = () => {
         { data: apptData,    error: apptError    },
         { data: blockedData, error: blockedError },
       ] = await Promise.all([
-        supabase.from('appointments').select('time_slot')
-          .eq('date', form.date).eq('doctor_name', form.doctor)
-          .in('status', ['pending', 'confirmed']),
+        // RPC returns only taken slots — appointments themselves are not publicly readable
+        supabase.rpc('get_booked_slots', { p_doctor: form.doctor, p_date: form.date }),
         supabase.from('blocked_slots').select('time_slot')
           .eq('date', form.date).eq('doctor_name', form.doctor),
       ]);

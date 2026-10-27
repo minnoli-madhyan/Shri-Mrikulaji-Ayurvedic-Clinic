@@ -17,7 +17,7 @@ export const useBookAppointment = () => {
 
     const { data: { user } } = await supabase.auth.getUser();
 
-    const { data, error } = await supabase
+    const { error } = await supabase
       .from('appointments')
       .insert([{
         patient_id:     user?.id ?? null,
@@ -33,9 +33,7 @@ export const useBookAppointment = () => {
         consult_type:   form.consultType,
         notes:          form.notes,
         status:         'pending',
-      }])
-      .select()
-      .single();
+      }]);   // no .select(): guests cannot read rows back under RLS
 
     setLoading(false);
     if (error) { setError(error.message); return { error }; }
@@ -50,7 +48,7 @@ export const useBookAppointment = () => {
       dateTime:    `${dateStr}, ${form.slot}`,
     });
 
-    return { data };
+    return { data: null };
   };
 
   return { book, loading, error };
